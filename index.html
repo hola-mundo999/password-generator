@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PassForge — Password Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="noise"></div>
+  <div class="grid-bg"></div>
+
+  <!-- Floating particles -->
+  <div class="particles">
+    <span></span><span></span><span></span>
+    <span></span><span></span><span></span>
+  </div>
+
+  <div class="scene">
+    <div class="card" id="card">
+
+      <div class="card-header">
+        <div class="logo-row">
+          <div class="logo-icon">⬡</div>
+          <span class="logo-text">PassForge</span>
+        </div>
+        <p class="tagline">Craft unbreakable passwords</p>
+      </div>
+
+      <!-- Generated Password Display -->
+      <div class="output-section">
+        <div class="output-label">GENERATED PASSWORD</div>
+        <div class="output-box">
+          <span class="output-text" id="passwordOutput">Click Generate</span>
+          <button class="copy-btn" id="copyBtn" title="Copy to clipboard">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+          </button>
+        </div>
+        <!-- Strength Bar -->
+        <div class="strength-row">
+          <span class="strength-label" id="strengthLabel">—</span>
+          <div class="strength-bar">
+            <div class="strength-fill" id="strengthFill"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Length Slider -->
+      <div class="control-group">
+        <div class="control-header">
+          <label class="ctrl-label">PASSWORD LENGTH</label>
+          <span class="ctrl-value" id="lengthValue">16</span>
+        </div>
+        <input type="range" id="lengthSlider" class="slider" min="6" max="64" value="16" />
+        <div class="slider-ticks">
+          <span>6</span><span>20</span><span>40</span><span>64</span>
+        </div>
+      </div>
+
+      <!-- Checkboxes -->
+      <div class="control-group">
+        <label class="ctrl-label">CHARACTER SETS</label>
+        <div class="checkbox-grid">
+
+          <label class="check-item" for="inclUppercase">
+            <input type="checkbox" id="inclUppercase" checked />
+            <span class="check-box"></span>
+            <span class="check-text">
+              <span class="check-title">Uppercase</span>
+              <span class="check-sub">A – Z</span>
+            </span>
+          </label>
+
+          <label class="check-item" for="inclLowercase">
+            <input type="checkbox" id="inclLowercase" checked />
+            <span class="check-box"></span>
+            <span class="check-text">
+              <span class="check-title">Lowercase</span>
+              <span class="check-sub">a – z</span>
+            </span>
+          </label>
+
+          <label class="check-item" for="inclNumbers">
+            <input type="checkbox" id="inclNumbers" checked />
+            <span class="check-box"></span>
+            <span class="check-text">
+              <span class="check-title">Numbers</span>
+              <span class="check-sub">0 – 9</span>
+            </span>
+          </label>
+
+          <label class="check-item" for="inclSymbols">
+            <input type="checkbox" id="inclSymbols" />
+            <span class="check-box"></span>
+            <span class="check-text">
+              <span class="check-title">Symbols</span>
+              <span class="check-sub">!@#$%^&*</span>
+            </span>
+          </label>
+
+        </div>
+      </div>
+
+      <!-- Generate Button -->
+      <button class="generate-btn" id="generateBtn">
+        <span class="btn-glow"></span>
+        <span class="btn-text">⚡ Generate Password</span>
+      </button>
+
+      <div class="copy-toast" id="copyToast">Copied to clipboard!</div>
+
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
