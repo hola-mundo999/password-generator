@@ -77,9 +77,23 @@ let levelClass = "";
     if(score <= 2) { label = "weak";  width = "25%";  levelClass = "weak"; }
     else if(score <= 4) { label = "fair"; width = "50%"; levelClass = "fair" }
     else if(score <= 5) { label = "good"; width = "75%"; levelClass = "good" }
-    else if (score >= 6) { label = "strong"; width = "100%"; levelClass = "strong" }
-
     strengthLabel.textContent = label;
-strengthFill.style.width = width;
-strengthFill.className = "strength-fill " + levelClass;
+    strengthFill.style.width = width;
+    strengthFill.className = "strength-fill " + levelClass;
 }
+
+// Ensure at least one option is checked
+function ensureOption() {
+    if (!document.getElementById("inclUppercase").checked &&
+        !document.getElementById("inclLowercase").checked &&
+        !document.getElementById("inclNumbers").checked &&
+        !document.getElementById("inclSymbols").checked) {
+        document.getElementById("inclLowercase").checked = true;
+    }
+}
+
+// Auto generate on page load
+window.addEventListener("DOMContentLoaded", () => {
+    ensureOption();
+    generateBtn.click();
+});
