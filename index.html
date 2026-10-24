@@ -31,9 +31,17 @@
         <p class="tagline">Craft unbreakable passwords</p>
       </div>
 
+      <!-- Mode switch -->
+      <div class="mode-switch" role="tablist" aria-label="Generation mode">
+        <button class="mode-tab is-active" id="modePassword" type="button" role="tab"
+                aria-selected="true" aria-controls="passwordControls">Password</button>
+        <button class="mode-tab" id="modePassphrase" type="button" role="tab"
+                aria-selected="false" aria-controls="passphraseControls">Passphrase</button>
+      </div>
+
       <!-- Generated Password Display -->
       <div class="output-section">
-        <div class="output-label">GENERATED PASSWORD</div>
+        <div class="output-label" id="outputLabel">GENERATED PASSWORD</div>
         <div class="output-box">
           <span class="output-text" id="passwordOutput">Press generate</span>
           <button class="copy-btn" id="copyBtn" title="Copy to clipboard">
@@ -52,6 +60,9 @@
           </div>
         </div>
       </div>
+
+      <!-- Password controls -->
+      <div class="mode-panel" id="passwordControls">
 
       <!-- Length Slider -->
       <div class="control-group">
@@ -117,6 +128,61 @@
 
         </div>
       </div>
+
+      </div><!-- /passwordControls -->
+
+      <!-- Passphrase controls -->
+      <div class="mode-panel" id="passphraseControls" hidden>
+
+        <div class="control-group">
+          <div class="control-header">
+            <label class="ctrl-label" for="wordSlider">WORD COUNT</label>
+            <span class="ctrl-value" id="wordValue">4</span>
+          </div>
+          <input type="range" id="wordSlider" class="slider" min="3" max="8" value="4" />
+          <div class="slider-ticks">
+            <span>3</span><span>5</span><span>7</span><span>8</span>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <div class="control-header">
+            <label class="ctrl-label" for="separatorSelect">SEPARATOR</label>
+          </div>
+          <select id="separatorSelect" class="select-input">
+            <option value="-" selected>hyphen   -</option>
+            <option value=".">dot   .</option>
+            <option value="_">underscore   _</option>
+            <option value=" ">space</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label class="ctrl-label">WORD OPTIONS</label>
+          <div class="checkbox-grid">
+
+            <label class="check-item" for="capitalizeWords">
+              <input type="checkbox" id="capitalizeWords" checked />
+              <span class="check-box"></span>
+              <span class="check-text">
+                <span class="check-title">Capitalise</span>
+                <span class="check-sub">Acorn Valley</span>
+              </span>
+            </label>
+
+            <label class="check-item" for="appendNumber">
+              <input type="checkbox" id="appendNumber" checked />
+              <span class="check-box"></span>
+              <span class="check-text">
+                <span class="check-title">Add a number</span>
+                <span class="check-sub">42</span>
+              </span>
+            </label>
+
+          </div>
+        </div>
+
+      </div><!-- /passphraseControls -->
 
       <!-- Generate Button -->
       <button class="generate-btn" id="generateBtn">

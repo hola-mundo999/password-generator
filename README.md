@@ -11,6 +11,9 @@ actually random.
 - Length from 6 to 64 characters, with the preview regenerating live as you drag
 - Toggle Uppercase, Lowercase, Numbers and Symbols independently
 - **Avoid look-alikes** mode drops `O 0 I l 1 | \`` for passwords you have to dictate or type by hand
+- **Passphrase mode** — a second tab that builds memorable passphrases from a bundled 2,117-word
+  list (still drawn with `crypto.getRandomValues`): 3–8 words, your choice of separator, optional
+  capitalisation and a trailing number, with entropy reported in bits either way
 - **Entropy meter** — shows the real strength in bits, labelled Weak / Fair / Good / Strong
 - One-click copy with an inline toast (and a fallback for browsers without the async clipboard API)
 - Guards: you cannot turn off every character set, and copying before generating is refused politely
