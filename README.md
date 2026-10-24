@@ -1,53 +1,48 @@
 # 🔐 PassForge — Password Generator
 
-A sleek, cyberpunk-themed password generator built with vanilla HTML, CSS, and JavaScript.
+A cyberpunk-themed password generator built with vanilla HTML, CSS and JavaScript. It uses the
+browser's **CSPRNG** (`crypto.getRandomValues`) — never `Math.random` — so the passwords are
+actually random.
 
 ## ✨ Features
 
-- Generate secure passwords up to 64 characters long
-- Choose character sets — Uppercase, Lowercase, Numbers, Symbols
-- Real-time password strength indicator (Weak / Fair / Good / Strong)
-- One-click copy to clipboard
-- Smooth roll-in card animation on load
-- Neon glowing UI with animated particles and scanline effect
+- Cryptographically secure randomness with rejection sampling (no modulo bias)
+- **Guaranteed coverage**: at least one character from every selected set, then securely shuffled
+- Length from 6 to 64 characters, with the preview regenerating live as you drag
+- Toggle Uppercase, Lowercase, Numbers and Symbols independently
+- **Avoid look-alikes** mode drops `O 0 I l 1 | \`` for passwords you have to dictate or type by hand
+- **Entropy meter** — shows the real strength in bits, labelled Weak / Fair / Good / Strong
+- One-click copy with an inline toast (and a fallback for browsers without the async clipboard API)
+- Guards: you cannot turn off every character set, and copying before generating is refused politely
+- Neon UI with animated particles, scanlines and a roll-in card (no libraries)
 
 ## 🛠️ Built With
 
 - HTML5
 - CSS3 (animations, CSS variables, grid)
-- Vanilla JavaScript (no libraries)
+- Vanilla JavaScript — Web Crypto API, no dependencies
 
 ## 📂 Project Structure
 
-```
+```text
 password-generator/
 ├── index.html
 ├── style.css
-└── script.js
+└── app.js
 ```
 
 ## 🚀 How to Use
 
-1. Clone the repository
-2. Open `index.html` in your browser
-3. Select your preferred character sets
-4. Adjust the password length using the slider
-5. Click **Generate Password**
-6. Hit the copy button to copy to clipboard
+1. Open `index.html` in your browser
+2. Pick your character sets and length
+3. Hit **Generate Password** (a password is already waiting on load)
+4. Press the copy button — the toast confirms it
 
 ## 💡 Concepts Applied
 
-- DOM manipulation with `querySelector` / `getElementById`
-- Event listeners (`click`, `input`)
-- String building with loops and `Math.random()`
-- Regex for password strength checking (`.test()`)
-- Dynamic class and style updates
+- `crypto.getRandomValues` + rejection sampling for uniform randomness
+- Fisher–Yates shuffle driven by secure random indices
+- Shannon entropy estimate: `length × log2(pool size)`
+- Conditional regeneration so controls and preview stay in sync
+- Clipboard API with a `document.execCommand` fallback
 - CSS keyframe animations and 3D transforms
-
-## 🔗 Live Demo
-
-> Open `index.html` directly in your browser — no server needed!
-
----
-
-Made with 💚 by [hola-mundo999](https://github.com/hola-mundo999)
